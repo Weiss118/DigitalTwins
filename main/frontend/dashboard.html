@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Twin PoC - Panel de Control">
+    <meta name="theme-color" content="#1e3a5f">
+    <title>Digital Twin PoC - Panel de Control</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+    <script src="js/sw-register.js" defer></script>
+</head>
+<body>
+    <!-- Redirigir a index.html que maneja ambas pantallas -->
+    <script>
+        // Si ya está autenticado, mostrar dashboard; sino redirigir a login
+        if (sessionStorage.getItem('dt_access_token') || localStorage.getItem('dt_access_token')) {
+            window.location.href = '/';
+        } else {
+            window.location.href = '/';
+        }
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=/">
+        <p>Redirigiendo a <a href="/">Digital Twin PoC</a>...</p>
+    </noscript>
+</body>
+</html>

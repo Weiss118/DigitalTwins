@@ -1,0 +1,23 @@
+[
+  {
+    "numero_empleado": "EMP001",
+    "name": "Juan Pérez (Operador)",
+    "password": "12345678",
+    "role": "OPERADOR",
+    "active": true
+  },
+  {
+    "numero_empleado": "EMP002",
+    "name": "Pedro Gómez (Técnico)",
+    "password": "12345678",
+    "role": "TECNICO",
+    "active": true
+  },
+  {
+    "numero_empleado": "EMP003",
+    "name": "María Rodríguez (Supervisora)",
+    "password": "12345678",
+    "role": "SUPERVISOR",
+    "active": true
+  }
+]

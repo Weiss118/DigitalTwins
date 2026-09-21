@@ -1,0 +1,41 @@
+# Configuración de la aplicación Digital Twin PoC
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Configuración Spring
+spring:
+  application:
+    name: digital-twin-poc
+  
+  # Jackson para serialización JSON
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+# Configuración JWT
+jwt:
+  secret: digitalTwinPoCSecretKey2024ForIndustrialManufacturingDigitalTwinApplicationSecureKey
+  expiration: 3600000  # 1 hora en milisegundos
+
+# Logging
+logging:
+  level:
+    com.digitaltwin: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Actuator para health checks
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
