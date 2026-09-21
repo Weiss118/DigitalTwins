@@ -10,7 +10,14 @@
 // ============================================================================
 
 const CONFIG = {
-  API_BASE_URL: '/api/v1',
+  // Detectar automáticamente entorno: si frontend en puerto distinto al backend, usar URL absoluta
+  API_BASE_URL: (() => {
+    // En desarrollo con puertos distintos (ej: frontend 3000/5173, backend 8080)
+    // En producción (mismo origen): ruta relativa
+    const backendPort = '8080';
+    const isDev = location.port && location.port !== backendPort && ['3000', '5173', '8081', '4200'].includes(location.port);
+    return isDev ? `http://localhost:${backendPort}/api/v1` : '/api/v1';
+  })(),
   ENDPOINTS: {
     LOGIN: '/auth/login'
   },
@@ -48,7 +55,7 @@ const AppState = {
 
 const Utils = {
   /**
-   * Realiza peticiones HTTP con manejo de errores estándar
+   * Realiza peticiones HTTP con manejo de errores estándar y logging mejorado
    */
   async fetchWithAuth(url, options = {}) {
     const headers = {
@@ -60,21 +67,46 @@ const Utils = {
       headers['Authorization'] = `Bearer ${AppState.token}`;
     }
 
-    const response = await fetch(url, {
-      ...options,
-      headers
-    });
+    // Construir URL completa si es relativa
+    const fullUrl = url.startsWith('http') ? url : `${CONFIG.API_BASE_URL}${url}`;
 
-    const data = await response.json().catch(() => ({}));
+    console.log(`[API] ${options.method || 'GET'} ${fullUrl}`, options.body ? JSON.parse(options.body) : '');
 
-    if (!response.ok) {
-      const error = new Error(data.message || 'Error en la petición');
-      error.status = response.status;
-      error.data = data;
+    try {
+      const response = await fetch(fullUrl, {
+        ...options,
+        headers,
+        credentials: 'include'  // Importante para cookies si se usan en el futuro
+      });
+
+      // Leer respuesta como texto primero para debug
+      const responseText = await response.text();
+      console.log(`[API] Response ${response.status}:`, responseText);
+
+      let data = {};
+      try {
+        data = responseText ? JSON.parse(responseText) : {};
+      } catch (e) {
+        console.warn('[API] Respuesta no es JSON válido:', responseText);
+      }
+
+      if (!response.ok) {
+        const error = new Error(data.message || `Error HTTP ${response.status}`);
+        error.status = response.status;
+        error.data = data;
+        error.responseText = responseText;
+        throw error;
+      }
+
+      return data;
+    } catch (error) {
+      console.error('[API] Error en fetch:', error);
+      // Re-lanzar con información útil
+      if (!error.status) {
+        error.message = 'Error de conexión: ¿Backend corriendo en puerto 8080? ¿CORS configurado?';
+      }
       throw error;
     }
-
-    return data;
   },
 
   /**

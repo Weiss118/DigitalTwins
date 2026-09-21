@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final UserRepository userRepository;
