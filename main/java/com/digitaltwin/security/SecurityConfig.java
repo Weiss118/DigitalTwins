@@ -53,6 +53,8 @@ public class SecurityConfig {
                 
                 // Autorización de endpoints
                 .authorizeHttpRequests(auth -> auth
+                        // Permitir preflight CORS (OPTIONS) para todas las rutas
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Endpoints públicos
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
