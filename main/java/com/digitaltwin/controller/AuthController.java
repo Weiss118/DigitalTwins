@@ -3,6 +3,7 @@ package com.digitaltwin.controller;
 import com.digitaltwin.model.ErrorResponse;
 import com.digitaltwin.model.LoginRequest;
 import com.digitaltwin.model.LoginResponse;
+import com.digitaltwin.model.User;
 import com.digitaltwin.repository.UserRepository;
 import com.digitaltwin.security.JwtUtil;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,7 +46,12 @@ public class AuthController {
             @Valid @RequestBody LoginRequest request,
             HttpServletRequest httpServletRequest) {
 
+        log.info("=== LOGIN REQUEST RECEIVED ===");
+        log.info("Method: {}", httpServletRequest.getMethod());
+        log.info("Request URI: {}", httpServletRequest.getRequestURI());
+        log.info("Content-Type: {}", httpServletRequest.getContentType());
         log.info("Intento de login para empleado: {}", request.getEmployeeNumber());
+        log.info("Password present: {}", request.getPassword() != null && !request.getPassword().isEmpty());
 
         // Validar credenciales contra repositorio en memoria
         var userOptional = userRepository.validateCredentials(

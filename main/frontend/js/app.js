@@ -10,14 +10,8 @@
 // ============================================================================
 
 const CONFIG = {
-  // Detectar automáticamente entorno: si frontend en puerto distinto al backend, usar URL absoluta
-  API_BASE_URL: (() => {
-    // En desarrollo con puertos distintos (ej: frontend 3000/5173, backend 8080)
-    // En producción (mismo origen): ruta relativa
-    const backendPort = '8080';
-    const isDev = location.port && location.port !== backendPort && ['3000', '5173', '8081', '4200'].includes(location.port);
-    return isDev ? `http://localhost:${backendPort}/api/v1` : '/api/v1';
-  })(),
+  // FORZAR URL ABSOLUTA AL BACKEND PARA EVITAR PROBLEMAS DE RUTA RELATIVA
+  API_BASE_URL: 'http://localhost:8082/api/v1',
   ENDPOINTS: {
     LOGIN: '/auth/login'
   },
