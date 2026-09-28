@@ -1,0 +1,12 @@
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\security\JwtUtil.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\model\UserResponse.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\model\ErrorResponse.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\model\User.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\repository\UserRepository.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\DigitalTwinPocApplication.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\model\LoginResponse.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\security\SecurityConfig.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\security\JwtAuthenticationFilter.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\model\LoginRequest.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\security\UserDetailsServiceImpl.java
+C:\Users\marco\OneDrive\Documentos\digital-twin-poc\src\main\java\com\digitaltwin\controller\AuthController.java
