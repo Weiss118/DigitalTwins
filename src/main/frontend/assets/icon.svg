@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Fondo -->
+  <rect width="512" height="512" rx="96" fill="#1e3a5f"/>
+  
+  <!-- Círculo externo -->
+  <circle cx="256" cy="256" r="200" stroke="#00a8cc" stroke-width="12" fill="none"/>
+  
+  <!-- Checkmark central -->
+  <path d="M140 256L224 340L372 192" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Puntos de datos alrededor del círculo -->
+  <g stroke="#00a8cc" stroke-width="8" fill="none">
+    <circle cx="256" cy="80" r="8"/>
+    <circle cx="416" cy="144" r="6"/>
+    <circle cx="464" cy="256" r="8"/>
+    <circle cx="416" cy="368" r="6"/>
+    <circle cx="256" cy="432" r="8"/>
+    <circle cx="96" cy="368" r="6"/>
+    <circle cx="48" cy="256" r="8"/>
+    <circle cx="96" cy="144" r="6"/>
+  </g>
+  
+  <!-- Líneas de conexión -->
+  <g stroke="#00a8cc" stroke-width="2" stroke-dasharray="8 4" fill="none">
+    <path d="M256 80 L256 144"/>
+    <path d="M416 144 L352 208"/>
+    <path d="M464 256 L400 256"/>
+    <path d="M416 368 L352 304"/>
+    <path d="M256 432 L256 368"/>
+    <path d="M96 368 L160 304"/>
+    <path d="M48 256 L112 256"/>
+    <path d="M96 144 L160 208"/>
+  </g>
+</svg>
